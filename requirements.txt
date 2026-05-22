@@ -11,3 +11,4 @@ pytest
 prometheus-fastapi-instrumentator
 pytest
 httpx
+flake8
