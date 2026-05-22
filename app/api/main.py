@@ -8,6 +8,7 @@ from fastapi import (
 
 from pydantic import ValidationError
 
+
 from PIL import Image
 
 import numpy as np
@@ -24,6 +25,13 @@ logger = logging.getLogger(__name__)
 app = FastAPI(
     title="MNIST Digit Predictor API"
 )
+
+@app.get("/health")
+def health_check():
+
+    return {
+        "status": "healthy"
+    }
 
 
 @app.get("/")
