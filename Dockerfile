@@ -1,11 +1,32 @@
+# =========================
+# Stage 1: build dependencies
+# =========================
+FROM python:3.10-slim AS builder
+
+WORKDIR /app
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential gcc \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY requirements.txt .
+
+RUN pip install --user --no-cache-dir -r requirements.txt
+
+
+# =========================
+# Stage 2: runtime image
+# =========================
 FROM python:3.10-slim
 
 WORKDIR /app
 
-COPY requirements.txt .
+ENV PATH=/root/.local/bin:$PATH
 
-RUN pip install --no-cache-dir -r requirements.txt
+# copy installed packages from builder
+COPY --from=builder /root/.local /root/.local
 
+# copy app code
 COPY . .
 
 EXPOSE 8000
