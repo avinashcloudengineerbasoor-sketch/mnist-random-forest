@@ -34,7 +34,8 @@ Instrumentator().instrument(app).expose(app)
 def health_check():
     logger.info("Health endpoint called")
     return {
-        "status": "healthy"
+        "status": "healthy",
+        "service": "mnist-digit-predictor"
     }
 
 
@@ -43,14 +44,6 @@ def root():
 
     return {
         "message": "MNIST Prediction API Running"
-    }
-
-
-@app.get("/health")
-def health_check():
-
-    return {
-        "status": "healthy"
     }
 
 
