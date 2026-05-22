@@ -7,7 +7,8 @@ from fastapi import (
 )
 
 from pydantic import ValidationError
-
+from prometheus_fastapi_instrumentator import Instrumentator
+from app.monitoring.logging_config import logger
 
 from PIL import Image
 
@@ -26,9 +27,12 @@ app = FastAPI(
     title="MNIST Digit Predictor API"
 )
 
+logger.info("Starting digit prediction API")
+
+Instrumentator().instrument(app).expose(app)
 @app.get("/health")
 def health_check():
-
+    logger.info("Health endpoint called")
     return {
         "status": "healthy"
     }
@@ -57,7 +61,7 @@ async def predict(
 ):
 
     try:
-
+        logger.info("Prediction request received")
         logger.info(
             f"Received request: {image.filename}"
         )
@@ -78,15 +82,15 @@ async def predict(
             img_array,
             validated_metadata.model_dump()
         )
-
+        
         logger.info(
             f"Prediction success: {result}"
         )
-
+        logger.info(f"Prediction completed: {result}")
         return result
 
     except ValidationError as e:
-
+        logger.error(f"Inference failed: {str(e)}")
         logger.warning(
             f"Validation failed: {str(e)}"
         )
