@@ -1,6 +1,6 @@
-Random Forest MLOps Project
+########### Random Forest MLOps Project
 
-Project Overview
+### Project Overview
 
 This project demonstrates a simple end-to-end MLOps workflow using:
 
@@ -15,13 +15,13 @@ The application uses a trained Random Forest model to predict handwritten digits
 
 The goal of this project was to:
 
-containerize the application
+### containerize the application
 automate CI/CD pipeline
 push Docker images to AWS ECR
 provision infrastructure using Terraform
 deploy the application into ECS Fargate
 
-Architecture
+### Architecture
 Developer Push
       ↓
 GitHub Actions CI
@@ -40,7 +40,7 @@ AWS ECS Fargate Deployment
       ↓
 Public API Endpoint
 
-Technologies Used
+### Technologies Used
 | Tool            | Purpose                 |
 | --------------- | ----------------------- |
 | Python          | Application development |
@@ -117,7 +117,7 @@ The container runs using:
 CMD ["uvicorn", "app.api.main:app", "--host", "0.0.0.0", "--port", "8000"]
 
 
-CI Pipeline
+####### CI Pipeline
 
 GitHub Actions CI pipeline performs:
 
@@ -137,7 +137,7 @@ latest
 20260524-171756
 
 
-AWS Deployment
+##### AWS Deployment
 ECR
 
 Docker images are stored in:
@@ -145,7 +145,7 @@ Docker images are stored in:
 
 ECS Fargate
 
-Terraform creates:
+### Terraform creates:
 
 ECS Cluster
 ECS Service
@@ -167,7 +167,7 @@ terraform apply
 
 Public Access
 
-After deployment:
+*****After deployment:*****
 
 ECS task receives a public IP
-application becomes accessible through: http://40.192.38.14:8000/docs
+***********application becomes accessible through: http://40.192.38.14:8000/docs**************
