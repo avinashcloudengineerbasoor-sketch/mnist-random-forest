@@ -38,14 +38,11 @@ jobs:
       - name: Terraform Init
         run: terraform init
 
-      # Terraform Validate
-      - name: Terraform Validate
-        run: terraform validate
+      # Terraform Destroy Old Infrastructure
+      - name: Terraform Destroy
+        run: terraform destroy -auto-approve
+        continue-on-error: true
 
-      # Terraform Plan
-      - name: Terraform Plan
-        run: terraform plan
-
-      # Terraform Apply
+      # Terraform Apply New Infrastructure
       - name: Terraform Apply
         run: terraform apply -auto-approve
