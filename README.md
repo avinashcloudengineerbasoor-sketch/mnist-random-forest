@@ -54,9 +54,9 @@ Technologies Used
 | Flake8          | Linting                 |
 | Pytest          | Testing                 |
 
+# Project Structure
 
-Project Structure
-
+```text
 .
 ├── .github/
 │   └── workflows/
@@ -77,9 +77,10 @@ Project Structure
 ├── Dockerfile
 ├── requirements.txt
 └── README.md
+```
 
 
-Application Workflow
+### Application Workflow
 1. Model Training
 
 The Random Forest model is trained using the MNIST dataset.
