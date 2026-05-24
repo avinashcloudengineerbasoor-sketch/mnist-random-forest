@@ -1,4 +1,4 @@
-#### Random Forest MLOps Project
+**Random Forest MLOps Project**
 
 ### Project Overview
 
