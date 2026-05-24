@@ -12,10 +12,10 @@ on:
 
 env:
   AWS_REGION: ap-south-2
-  ECR_REPOSITORY: mnist-random-forest
+  ECR_REPOSITORY: mnist-random-forest/random
 
 permissions:
-  contents: read
+  contents: readgit 
 
 jobs:
   test-build-push:
