@@ -83,7 +83,7 @@ resource "aws_ecs_task_definition" "app" {
     {
       name  = "mnist-app"
 
-      image = "146713999197.dkr.ecr.ap-south-2.amazonaws.com/mnist-random-forest:latest"
+      image = "146713999197.dkr.ecr.ap-south-2.amazonaws.com/mnist-random-forest/random:latest"
 
       essential = true
 
